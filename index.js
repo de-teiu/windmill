@@ -27,7 +27,8 @@ const analyseAudio = () => {
 
   const isRotating = wingDom.classList.contains("animation");
   const spc = spectrums[0];
-  if (spc > 100 && !isRotating){
+  console.log(spc);
+  if (spc > 200 && !isRotating){
     wingDom.classList.remove("animation-willstop");
     wingDom.classList.add("animation");
   }else if(spc === 0 && isRotating){
@@ -50,7 +51,7 @@ const activateMicrophone = () => {
 
     // 音声解析関連
     audioAnalyser = audioContext.createAnalyser();
-    audioAnalyser.fftSize = 64;
+    audioAnalyser.fftSize = 256;
     frequencyData = new Uint8Array(audioAnalyser.frequencyBinCount);
     timeDomainData = new Uint8Array(audioAnalyser.frequencyBinCount);
     mediastreamsource.connect(audioAnalyser);
