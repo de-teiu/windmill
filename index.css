@@ -1,0 +1,18 @@
+.windmill {
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+.windmill > img {
+  width: 100%;
+}
+
+.wing {
+  position: absolute;
+  left: 0%;
+  z-index: 1;
+}
+

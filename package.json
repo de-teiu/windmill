@@ -1,0 +1,25 @@
+{
+  "name": "windmill",
+  "version": "1.0.0",
+  "description": "息をふきかけると風車が回るWebアプリ",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/de-teiu/windmill.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/de-teiu/windmill/issues"
+  },
+  "homepage": "https://github.com/de-teiu/windmill#readme",
+  "dependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
+}
