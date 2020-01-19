@@ -2,9 +2,7 @@ const audioContext = new AudioContext();
 const BUFFER_SIZE = 1024;
 
 let audioAnalyser = null;
-
-const canvas = document.getElementById('canvas');
-const canvasContext = canvas.getContext('2d');
+const wingDom = document.getElementById("wing");
 
 window.onload = () => {
   navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
@@ -24,36 +22,18 @@ const onAudioProcess = (e) => {
  * 波形を解析してキャンバスに出力
  */
 const analyseAudio = () => {
-  const fsDivN = audioContext.sampleRate / audioAnalyser.fftSize;
   const spectrums = new Uint8Array(audioAnalyser.frequencyBinCount);
   audioAnalyser.getByteFrequencyData(spectrums);
-  canvasContext.clearRect(0, 0, canvas.width, canvas.height);
 
-  canvasContext.beginPath();
-
-  spectrums.forEach((spectrum,index,array) => {
-    const x = (index / spectrums.length) * canvas.width;
-    const y = (1 - (spectrum / 255)) * canvas.height;
-    if (index === 0) {
-      canvasContext.moveTo(x, y);
-    } else {
-      canvasContext.lineTo(x, y);
-    }
-    const f = Math.floor(index * fsDivN);
-    if ((f % 500) === 0) {
-      const text = (f < 1000) ? (f + ' Hz') : ((f / 1000) + ' kHz');
-      canvasContext.fillRect(x, 0, 1, canvas.height);
-      canvasContext.fillText(text, x, canvas.height);
-    }
-  });
-
-  canvasContext.stroke();
-  const TEXT_YS = ['1.00', '0.50', '0.00'];
-  TEXT_YS.forEach(TEXT_Y => {
-    const gy = (1 - parseFloat(TEXT_Y)) * canvas.height;
-    canvasContext.fillRect(0, gy, canvas.width, 1);
-    canvasContext.fillText(TEXT_Y, 0, gy);
-  });
+  const isRotating = wingDom.classList.contains("animation");
+  const spc = spectrums[0];
+  if (spc > 100 && !isRotating){
+    wingDom.classList.remove("animation-willstop");
+    wingDom.classList.add("animation");
+  }else if(spc === 0 && isRotating){
+    wingDom.classList.remove("animation");
+    wingDom.classList.add("animation-willstop");
+  }
 };
 
 /**
@@ -70,7 +50,7 @@ const activateMicrophone = () => {
 
     // 音声解析関連
     audioAnalyser = audioContext.createAnalyser();
-    audioAnalyser.fftSize = 2048;
+    audioAnalyser.fftSize = 64;
     frequencyData = new Uint8Array(audioAnalyser.frequencyBinCount);
     timeDomainData = new Uint8Array(audioAnalyser.frequencyBinCount);
     mediastreamsource.connect(audioAnalyser);

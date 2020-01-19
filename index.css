@@ -14,5 +14,33 @@
   position: absolute;
   left: 0%;
   z-index: 1;
+  will-change: transform;
 }
 
+.animation {
+  animation: rotation 0.25s linear 0s infinite forwards;
+}
+
+.animation-willstop {
+  animation: 
+    rotation-willstop 3s ease-out 0s 1 backwards;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes rotation-willstop {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(2160deg);
+  }
+}
