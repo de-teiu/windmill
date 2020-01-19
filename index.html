@@ -3,12 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <link href="./index.css" rel="stylesheet">
-  <title>風車</title>
+  <title>Web風車</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+  <p class="description">マイクに息を吹きかけると風車が回るぞ！</p>
   <div class="windmill">
     <img src="./image/staff.png">
     <img src="./image/wing.png" id="wing" class="wing">
+  </div>
+  <div id="entrance" class="overlay flex">
+    <div>
+      <button class="btn-start" id="btnStart">画面タップで開始</button>
+    </div>
   </div>
   <script src="./index.js"></script>
 </body>

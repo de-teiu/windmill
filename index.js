@@ -6,7 +6,12 @@ const wingDom = document.getElementById("wing");
 
 window.onload = () => {
   navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
-  activateMicrophone();
+
+  document.getElementById("btnStart").addEventListener("click",(e)=>{
+    const entranceDom = document.getElementById("entrance");
+    entranceDom.parentNode.removeChild(entranceDom);
+    activateMicrophone();
+  });
 };
 
 /**
