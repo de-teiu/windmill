@@ -46,6 +46,7 @@ const analyseAudio = () => {
  * マイク起動
  */
 const activateMicrophone = () => {
+  //TODO AndroidのChromeだとマイクが動かなかった
   navigator.getUserMedia({audio: true,video:false},(stream) => {
     // 録音関連
     const scriptProcessor = audioContext.createScriptProcessor(BUFFER_SIZE, 1, 1);
