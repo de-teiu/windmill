@@ -17,6 +17,7 @@
 .wing {
   position: absolute;
   left: 0%;
+  top:0px;
   z-index: 1;
   will-change: transform;
 }
