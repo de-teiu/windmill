@@ -40,7 +40,7 @@ const activateMicrophone = () => {
       if (spc > 200 && !isRotating) {
         wingDom.classList.remove("animation-willstop");
         wingDom.classList.add("animation");
-      } else if (spc === 0 && isRotating) {
+      } else if (spc < 100 && isRotating) {
         wingDom.classList.remove("animation");
         wingDom.classList.add("animation-willstop");
       }
