@@ -1,7 +1,7 @@
 const BUFFER_SIZE = 1024;
 
 const wingDom = document.getElementById("wing");
-const valueDom = document.getElementById("value");
+//const valueDom = document.getElementById("value");
 
 window.onload = () => {
   document.getElementById("btnStart").addEventListener("click", (e) => {
@@ -42,7 +42,7 @@ const activateMicrophone = () => {
         const isRotating = wingDom.classList.contains("animation");
         const spc = spectrums[0];
         console.log(spc);
-        valueDom.innerHTML = spc;
+        //valueDom.innerHTML = spc;
         if (spc > 200 && !isRotating) {
           wingDom.classList.remove("animation-willstop");
           wingDom.classList.add("animation");
