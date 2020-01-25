@@ -27,6 +27,7 @@ const onAudioProcess = (e) => {
  * 波形を解析してキャンバスに出力
  */
 const analyseAudio = () => {
+  console.log("analyseAudio");
   const spectrums = new Uint8Array(audioAnalyser.frequencyBinCount);
   audioAnalyser.getByteFrequencyData(spectrums);
 
@@ -40,14 +41,16 @@ const analyseAudio = () => {
     wingDom.classList.remove("animation");
     wingDom.classList.add("animation-willstop");
   }
+  console.log("analyseAudio - 完了");
 };
 
 /**
  * マイク起動
  */
 const activateMicrophone = () => {
-  //TODO AndroidのChromeだとマイクが動かなかった
+  console.log("activateMicrophone");
   navigator.getUserMedia({audio: true,video:false},(stream) => {
+    console.log("getUserMedia");
     // 録音関連
     const scriptProcessor = audioContext.createScriptProcessor(BUFFER_SIZE, 1, 1);
     const mediastreamsource = audioContext.createMediaStreamSource(stream);
@@ -62,6 +65,7 @@ const activateMicrophone = () => {
     timeDomainData = new Uint8Array(audioAnalyser.frequencyBinCount);
     mediastreamsource.connect(audioAnalyser);
 
+    console.log("getUserMedia - 完了");
   },(error) =>{
     console.log(error);
   });
