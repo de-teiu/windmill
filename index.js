@@ -5,7 +5,7 @@ let audioAnalyser = null;
 const wingDom = document.getElementById("wing");
 
 window.onload = () => {
-  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
+  //navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
 
   document.getElementById("btnStart").addEventListener("click",(e)=>{
     const entranceDom = document.getElementById("entrance");
